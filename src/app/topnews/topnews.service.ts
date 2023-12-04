@@ -12,7 +12,7 @@ export class TopnewsService {
 
 
   GetTopNewsList(): Observable<TopNewsModel[]> {
-    debugger
+     
     return this.dataService.get(this.urlTopNewsList).pipe(map((data: any) => {
       return data;
     }));

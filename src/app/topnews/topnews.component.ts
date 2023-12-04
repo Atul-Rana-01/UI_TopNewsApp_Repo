@@ -56,7 +56,7 @@ export class TopnewsComponent {
     }
 
     applyFilter(event: Event) {
-      debugger
+       
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
     }

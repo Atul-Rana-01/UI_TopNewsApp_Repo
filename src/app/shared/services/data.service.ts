@@ -20,7 +20,7 @@ export class DataService {
 
     get(method:any) {
       if (method.indexOf('://') > 0) {     
-        debugger
+         
         return this.httpClient.get(method, this.httpOptions);
       } else
         return this.httpClient.get(this.baseURL + method, this.httpOptions);
