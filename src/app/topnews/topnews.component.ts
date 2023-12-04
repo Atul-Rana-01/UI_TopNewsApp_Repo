@@ -56,13 +56,24 @@ export class TopnewsComponent {
     }
 
     applyFilter(event: Event) {
-       const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+      
+      
+       let filterValue = (event.target as HTMLInputElement).value;
+       
+       filterValue = filterValue.trim().toLowerCase(); // Remove whitespace
+
+       // filtering the data 
+        const filteredData =  this.TopNewsModel.filter((data: any) => data.title.toLocaleLowerCase().indexOf(filterValue) !== -1)
+        this.dataSource = new MatTableDataSource(filteredData); // updating the data source of table
+        this.dataLength = filteredData.length; // update data length on page
+      
+       //re-arraging the page
+        const end = (this.currentPage + 1) * this.pageSize;
+        const start = this.currentPage * this.pageSize;
+        this.dataSource = filteredData.slice(start, end);
+      
     }
 
-     doFilter = (value: string) => {
-      this.dataSource.filter = value.trim().toLocaleLowerCase();
-    }
 
 // function for getting index of page for moving forward or backward
     public handlePage(e: any) {
