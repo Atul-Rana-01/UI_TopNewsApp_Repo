@@ -57,10 +57,8 @@ export class TopnewsComponent {
 
     applyFilter(event: Event) {
       
-      
        let filterValue = (event.target as HTMLInputElement).value;
-       
-       filterValue = filterValue.trim().toLowerCase(); // Remove whitespace
+       filterValue = filterValue.trim().toLowerCase(); // Remove whitespace and changing in lowercase
 
        // filtering the data 
         const filteredData =  this.TopNewsModel.filter((data: any) => data.title.toLocaleLowerCase().indexOf(filterValue) !== -1)
